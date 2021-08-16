@@ -1,0 +1,38 @@
+library(here)
+# install.packages("rJava")
+# devtools::install_github("OHDSI/OhdsiRTools")
+# devtools::install_github("OHDSI/SqlRender")
+# devtools::install_github("OHDSI/DatabaseConnector")
+# devtools::install_github("OHDSI/OhdsiSharing")
+# devtools::install_github("OHDSI/FeatureExtraction")
+# devtools::install_github("OHDSI/CohortMethod")
+# devtools::install_github("OHDSI/EmpiricalCalibration")
+# devtools::install_github("OHDSI/MethodEvaluation")
+# devtools::install_github("OHDSI/Achilles@v1.6.3")
+library(pkgdepends)
+library(glue)
+library(here)
+
+package_path <- 'libraries/src/contrib'
+ohdsi_github_packages <- c("Achilles",
+                           "CohortMethod",
+                           "DatabaseConnector",
+                           "EmpiricalCalibration",
+                           "FeatureExtraction",
+                           "MethodEvaluation",
+                           "OhdsiRTools",
+                           "OhdsiSharing",
+                           "SqlRender")
+
+install_packages <- function(package_name, library_dir){
+    print(package_name)
+    pdi <- new_pkg_installation_proposal(
+        glue("OHDSI/{package_name}"),
+        config = list(library = here('libraries'))
+    )
+    pdi$solve()
+    pdi$download()
+    pdi$install()
+}
+
+ohdsi_github_packages %>% map(~install_packages(., here('libaries')))

@@ -1,0 +1,4 @@
+.Rprofile
+.Rproj.user/
+renv/
+libraries/
