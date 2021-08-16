@@ -36,7 +36,7 @@ ohdsi_github_packages <- c("Achilles",
 
 download_dependencies <- function(package_name, target_dir){
     print(package_name)
-    pdl <- new_pkg_download_proposal(glue("{package_name}"), config = list(cache_dir = target_dir))
+    pdl <- new_pkg_download_proposal(package_name, config = list(cache_dir = target_dir))
     pdl$resolve()
     pdl$download()
 }
