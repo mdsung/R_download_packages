@@ -11,7 +11,6 @@ library(here)
 # devtools::install_github("OHDSI/Achilles@v1.6.3")
 library(pkgdepends)
 library(glue)
-library(here)
 
 package_path <- 'libraries/src/contrib'
 ohdsi_github_packages <- c("Achilles",

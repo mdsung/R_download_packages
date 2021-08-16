@@ -14,7 +14,7 @@ library(glue)
 
 ## List of archilles packages
 # Achilles-Node is not a package, just a R code
-
+cran_packages <- c('glue', 'here', 'pkgdepends')
 ohdsi_github_packages <- c("Achilles",
                            # "Achilles-Node",
                            "CohortMethod",
@@ -33,7 +33,16 @@ ohdsi_github_packages <- c("Achilles",
 
 ## download dependencies from tar.gz file
 
+
 download_dependencies <- function(package_name, target_dir){
+    print(package_name)
+    pdl <- new_pkg_download_proposal(glue("{package_name}"), config = list(cache_dir = target_dir))
+    pdl$resolve()
+    pdl$download()
+}
+
+
+download_ohdsi_dependencies <- function(package_name, target_dir){
     print(package_name)
     pdl <- new_pkg_download_proposal(glue("OHDSI/{package_name}"), config = list(cache_dir = target_dir))
     pdl$resolve()
@@ -42,4 +51,5 @@ download_dependencies <- function(package_name, target_dir){
 
 ## execute
 # ohdsi_github_packages %>% map(github_downloader)
-ohdsi_github_packages %>% map(~download_dependencies(., here("libraries")))
+cran_packages %>% map(~download_dependencies(., here("libraries")))
+ohdsi_github_packages %>% map(~download_ohdsi_dependencies(., here("libraries")))
