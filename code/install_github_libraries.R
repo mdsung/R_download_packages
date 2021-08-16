@@ -1,4 +1,3 @@
-library(here)
 # install.packages("rJava")
 # devtools::install_github("OHDSI/OhdsiRTools")
 # devtools::install_github("OHDSI/SqlRender")
@@ -11,7 +10,7 @@ library(here)
 # devtools::install_github("OHDSI/Achilles@v1.6.3")
 
 package_path <- '/libraries/src/contrib'
-cran_packages <- c('glue', 'here', 'pkgdepends', 'magnittr')
+cran_packages <- c('devtools', 'glue', 'here', 'pkgdepends', 'magnittr')
 
 install_cran_packages_from_local <- function(package_name){
     package_str_pattern <- paste0(package_name , '[a-zA-Z0-9_.]+gz$')
@@ -24,6 +23,7 @@ install_cran_packages_from_local(cran_packages[2])
 install_cran_packages_from_local(cran_packages[3])
 install_cran_packages_from_local(cran_packages[4])
 
+library(here)
 library(magnittr)
 library(pkgdepends)
 library(glue)

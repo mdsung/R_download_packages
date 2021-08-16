@@ -14,7 +14,7 @@ library(glue)
 
 ## List of archilles packages
 # Achilles-Node is not a package, just a R code
-cran_packages <- c('glue', 'here', 'pkgdepends')
+cran_packages <- c('devtools', 'glue', 'here', 'pkgdepends', 'devtools')
 ohdsi_github_packages <- c("Achilles",
                            # "Achilles-Node",
                            "CohortMethod",
