@@ -9,8 +9,25 @@ library(here)
 # devtools::install_github("OHDSI/EmpiricalCalibration")
 # devtools::install_github("OHDSI/MethodEvaluation")
 # devtools::install_github("OHDSI/Achilles@v1.6.3")
+
+package_path <- '/libraries/src/contrib'
+cran_packages <- c('glue', 'here', 'pkgdepends', 'magnittr')
+
+install_cran_packages_from_local <- function(package_name){
+    package_str_pattern <- paste0(package_name , '[a-zA-Z0-9_.]+gz$')
+    package_file <- list.files(package_path, pattern = package_str_pattern, ignore.case=TRUE)
+    install.packages(paste0(package_path , '/', package_file))
+}
+
+install_cran_packages_from_local(cran_packages[1])
+install_cran_packages_from_local(cran_packages[2])
+install_cran_packages_from_local(cran_packages[3])
+install_cran_packages_from_local(cran_packages[4])
+
+library(magnittr)
 library(pkgdepends)
 library(glue)
+library(purrr)
 
 package_path <- 'libraries/src/contrib'
 ohdsi_github_packages <- c("Achilles",
