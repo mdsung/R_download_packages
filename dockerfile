@@ -10,7 +10,7 @@ RUN apt-get update \
     && rm -rf /var/lib/apt/lists/*
 
 RUN git clone https://github.com/mdsung/R_download_packages && cd R_download_packages
-RUN R -e "install.packages(c('renv', 'purrr', 'here', 'glue', 'pkgdepends', 'magrittr'))" 
+RUN R -e "install.packages(c('renv', 'here', 'pkgdepends'))" 
 
 WORKDIR /R_download_packages
 
