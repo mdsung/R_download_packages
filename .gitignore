@@ -2,3 +2,4 @@
 .Rproj.user/
 renv/
 libraries/
+libraries_wo_docker/

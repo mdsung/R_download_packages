@@ -1,6 +1,6 @@
 #!/usr/bin/env Rscript
 
-## Author: MinDong Sung, M.D
+## Author: MinDong Sung.M.D
 ## Objective: github download with dependencies
 
 library(pkgdepends)
@@ -42,6 +42,9 @@ download_dependencies <- function(package_name, target_dir){
     pdl <- new_pkg_download_proposal(package_name, config = list(cache_dir = target_dir))
     pdl$resolve()
     pdl$download()
+    if (package_name == 'pkgdepends'){
+        write.csv(pdl$get_downloads(), 'pkgdepends_dependencies.csv')
+    }
 }
 
 download_ohdsi_dependencies <- function(package_name, target_dir){
